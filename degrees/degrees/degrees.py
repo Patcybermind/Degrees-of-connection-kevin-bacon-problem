@@ -84,11 +84,12 @@ def main():
             print(f"{i + 1}: {person1} and {person2} starred in {movie}")
 
 
-class Node: # each node is a chosen movie
+class Node:  # each node is a chosen movie
     def __init__(self, state, parent, action):
-        self.state = state # person id
-        self.parent = parent # node we came from
-        self.action = action # what movie got us here
+        self.state = state  # person id
+        self.parent = parent  # node we came from
+        self.action = action  # what movie got us here
+
 
 def shortest_path(source, target):
     """
@@ -108,13 +109,10 @@ def shortest_path(source, target):
 
     start_node = Node(state=source_person_id, parent=None, action=None)
     frontier.add(start_node)
-    #explored_nodes.append(start_node)
+    # explored_nodes.append(start_node)
 
     # check neighbors so what movies the source person has starred in
     
-
-    
-        
     # explore the frontier
     while frontier.empty() is False:
         print("frontier: ", [node.state for node in frontier.frontier])
@@ -138,7 +136,7 @@ def shortest_path(source, target):
             path.reverse()  # reverse to get from source to target
             return path
 
-            #return None
+            # return None
         
         # check for neighbors and add them to the frontier
         neighbors = neighbors_for_person(current_person_id)
@@ -146,11 +144,11 @@ def shortest_path(source, target):
             if person_id not in [node.state for node in explored_nodes]:
                 frontier.add(Node(state=person_id, parent=current_node, action=movie_id))
     
-    #time.sleep(1)  # Just to simulate some processing time
-    #print(frontier.frontier)
+    # time.sleep(1)  # Just to simulate some processing time
+    # print(frontier.frontier)
         
     # TODO
-    #raise NotImplementedError
+    # raise NotImplementedError
 
 
 def person_id_for_name(name):
